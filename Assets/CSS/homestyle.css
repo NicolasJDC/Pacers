@@ -10,7 +10,7 @@ body {
 
 header {
     display: flex;
-    background-color: #4ea9f2;
+    background-image: linear-gradient(135deg, #1e90ff, #00aaff);
     padding: 10px 20px;
     text-align: left;
     justify-content: space-between;
@@ -69,7 +69,7 @@ nav ul li a:hover {
 }
 
 .cta {
-    background-color: #3487d9;
+    background-image: linear-gradient(135deg, #1e90ff, #00aaff);
     padding: 75px 20px;
     color: white;
     text-align: center;
@@ -86,7 +86,7 @@ nav ul li a:hover {
 }
 
 .cta a {
-    background-color: #00a9f4;
+    background-color: #00b9f4;
     color: white;
     padding: 15px 30px;
     text-decoration: none;
@@ -159,13 +159,13 @@ footer {
     padding: 10px 15px;
     margin-top: 10px;
     border: none;
-    background-color: #00aaff;
+    background-color: #00b9f4;
     color: white;
     border-radius: 5px;
     cursor: pointer;
   }
   .newsletter button:hover {
-    background-color: #008fcc;
+    background-color: #008fc2;
   }
   .footer-bottom {
     text-align: center;
