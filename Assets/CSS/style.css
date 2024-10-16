@@ -48,7 +48,7 @@ nav ul li a:hover {
 }
 
 .hero {
-    background-image: url('https://via.placeholder.com/1200x600'); /* Ajuste a URL da imagem conforme necessário */
+    background-image: url(/Assets/Images/imagem-corporativa.png); /* Ajuste a URL da imagem conforme necessário */
     background-size: cover;
     background-position: center;
     color: white;
@@ -70,7 +70,7 @@ nav ul li a:hover {
 
 .cta {
     background-color: #3487d9;
-    padding: 50px 20px;
+    padding: 75px 20px;
     color: white;
     text-align: center;
 }
@@ -91,7 +91,7 @@ nav ul li a:hover {
     padding: 15px 30px;
     text-decoration: none;
     font-size: 18px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .cta a:hover {
@@ -101,7 +101,7 @@ nav ul li a:hover {
 footer {
     background-color: #333;
     color: #fff;
-    padding: 40px 0;
+    padding: 55px 0;
     font-family: Arial, sans-serif;
   }
   .footer-container {
@@ -137,19 +137,27 @@ footer {
     margin-right: 10px;
     display: inline-block;
   }
-  .social-icons img {
+  .social-icons i {
     width: 24px;
     height: 24px;
+    color: white;
   }
+
+  .social-icons i:hover{
+    scale: 1.2;
+  }
+
   .newsletter input[type="email"] {
     padding: 10px;
     border: none;
     border-radius: 5px;
+    margin-top: 10px;
     margin-right: 10px;
     width: 70%;
   }
   .newsletter button {
     padding: 10px 15px;
+    margin-top: 10px;
     border: none;
     background-color: #00aaff;
     color: white;
