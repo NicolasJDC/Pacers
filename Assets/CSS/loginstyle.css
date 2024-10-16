@@ -1,89 +1,109 @@
-/* Estilos gerais */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-  }
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
 
-  .container {
-    display: flex;
-    height: 100vh;
-  }
+.container {
+  display: flex;
+  height: 100vh;
+}
 
-  .login-section {
-    flex: 1;
-    background: linear-gradient(135deg, #1e90ff, #00aaff);
-    padding: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-  }
+.login-section {
+  flex: 1;
+  background: linear-gradient(135deg, #1e90ff, #00aaff);
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: relative;
+}
 
-  .login-box {
-    width: 350px;
-    text-align: center;
-  }
+.login-box {
+  width: 350px;
+  text-align: center;
+}
 
-  .login-box img {
-    width: 300px;
-    height: 300px;
-  }
+.login-box img {
+  width: 300px;
+  height: 300px;
+}
 
-  .login-box h2 {
-    margin-bottom: 30px;
-    font-size: 24px;
-  }
+.login-box h2 {
+  margin-bottom: 30px;
+  font-size: 24px;
+}
 
-  .login-box input {
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 25px;
-    font-size: 14px;
-  }
+.login-box input {
+  width: 90%;
+  padding: 15px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+}
 
-  .login-box input[type="text"],
-  .login-box input[type="password"] {
-    background-color: #fff;
-    color: #333;
-  }
+.login-box input[type="text"],
+.login-box input[type="password"] {
+  background-color: #fff;
+  color: #333;
+}
 
-  .login-box .remember-forgot {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-  }
+.login-box .remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
 
-  .login-box .remember-forgot input[type="checkbox"] {
-    margin-right: 10px;
-  }
+.login-box .remember-forgot input[type="checkbox"] {
+  margin-right: 10px;
+}
 
-  .login-box button {
-    width: 100%;
-    padding: 15px;
-    margin-top: 15px;
-    background-color: #00cc88;
-    border: none;
-    border-radius: 25px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
+.login-box button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 15px;
+  background-color: #00cc88;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
 
-  .login-box button:hover {
-    background-color: #00aa77;
-  }
+.login-box button:hover {
+  background-color: #00aa77;
+}
 
-  .login-box .signup-link {
-    margin-top: 20px;
-    font-size: 14px;
-  }
+.login-box .signup-link {
+  margin-top: 20px;
+  font-size: 14px;
+}
 
-  .login-box .signup-link a {
-    color: white;
-    text-decoration: underline;
-  }
+.login-box .signup-link a {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Botão Voltar no canto superior esquerdo */
+.back-button {
+    z-index: 1;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #ff6347;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.back-button:hover {
+  background-color: #e5533d;
+}
