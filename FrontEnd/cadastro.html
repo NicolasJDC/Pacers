@@ -18,10 +18,17 @@
         <!-- Logo -->
         <img src="/Assets/Images/LogoPBlack.png" alt="Logo Pacers">
         <form id="signupForm">
-          <input type="text" placeholder="Nome de Usuário" required>
-          <input type="email" placeholder="Email" required>
-          <input type="password" placeholder="Senha" required>
-          <button type="submit" id="signupButton">Cadastrar</button>
+          <input type="email" class="form-control" id="email" placeholder="E-mail" required>
+          <div class="input-group-append">
+          <span class="input-group-text">Email</span>
+          </div>
+
+          <input type="password" class="form-control" id="senha"placeholder="Senha" required>
+          <div class="input-group-append">
+            <span class="input-group-text">Senha</span>
+            </div>
+
+          <button class="btn btn primary" onclick="creteaLogin()">Criar conta</button>
         </form>
       </div>
     </div>
