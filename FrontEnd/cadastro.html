@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - Pacers</title>
+  <link rel="stylesheet" href="/Assets/CSS/cadastrostyle.css">
+
+  <script type="module" src="register.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Botão Voltar -->
+    <a href="login.html">
+      <button class="back-button">Voltar</button>
+    </a>
+    <!-- Seção de Cadastro -->
+    <div class="signup-section">
+      <div class="signup-box">
+        <!-- Logo -->
+        <img src="/Assets/Images/LogoPBlack.png" alt="Logo Pacers">
+        <form id="signupForm">
+
+          <label for="username">Username</label>   
+          <input type="email" placeholder="Email"  id="email" required>
+        
+          <label for="password">Password</label>   
+          <input type="password" placeholder="Password" id="password"required>
+         
+          <button id="submit" type="submit">Crie sua Conta  </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="/BackEnd/singup.js"></script>
+</body>
+</html>
