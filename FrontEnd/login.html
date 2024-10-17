@@ -27,11 +27,12 @@
           </div>
           <button type="submit">Entrar</button>
 
-          <!-- Botão de Login com Google -->
-          <button class="google-button">
-            <img src="Assets/Images/google-logo.png.png" alt="Google Logo">
+                  <!-- Botão de Login com Google -->
+          <button class="google-button" id="googleLogin">
+            <img src="Assets/Images/google-logo.png" alt="Google Logo">
             Continuar com Google
           </button>
+
         </form>
 
         <!-- Link para cadastro -->
@@ -57,22 +58,6 @@
    firebase.initializeApp(firebaseConfig);
 
 
- // Login via Google
- const auth = firebase.auth();
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-    document.getElementById('googleLogin').addEventListener('click', () => {
-      auth.signInWithPopup(provider)
-        .then((result) => {
-          // Login bem-sucedido
-          console.log(result.user);
-          alert(`Usuário logado: ${result.user.email}`);
-        })
-        .catch((error) => {
-          console.error(error);
-          alert('Erro ao tentar logar: ' + error.message);
-        });
-    });
 
      // Login via Google
   document.getElementById('googleLogin').addEventListener('click', () => {
