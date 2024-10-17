@@ -1,33 +1,31 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
-const dotenv = require('dotenv');
 
-// Configurações do servidor e Firebase
-dotenv.config();
-const serviceAccount = require('./firebaseServiceAccount.json');
+// Inicialize o Firebase Admin SDK
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: `https://${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`
+  credential: admin.credential.applicationDefault(),
+  databaseURL: "https://pacers-7928a-default-rtdb.firebaseio.com"
 });
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());  // Para interpretar requisições com JSON
 
-// Verificar token enviado pelo front-end
-app.post('/login', async (req, res) => {
-  const token = req.body.token; // Recebe o token do front-end
-  try {
-    const decodedToken = await admin.auth().verifyIdToken(token);
-    const userId = decodedToken.uid; // ID do usuário autenticado
-    res.status(200).json({ message: `Usuário autenticado: ${userId}` });
-  } catch (error) {
-    res.status(401).json({ error: 'Token inválido ou expirado' });
-  }
+// Rota para lidar com o login do usuário
+app.post('/login', (req, res) => {
+  const idToken = req.body.token;  // Token enviado pelo front-end
+
+  // Verificar o ID Token com Firebase Admin
+  admin.auth().verifyIdToken(idToken)
+    .then((decodedToken) => {
+      const uid = decodedToken.uid;
+      res.json({ message: 'Usuário autenticado com sucesso', uid });
+    })
+    .catch((error) => {
+      res.status(401).json({ message: 'Token inválido', error });
+    });
 });
 
-// Iniciar servidor
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+// Inicializando o servidor
+app.listen(3000, () => {
+  console.log('Servidor rodando na porta 3000');
 });
