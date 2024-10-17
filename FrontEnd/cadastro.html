@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastro - Pacers</title>
   <link rel="stylesheet" href="/Assets/CSS/cadastrostyle.css">
+
+  <script type="module" src="register.js" defer></script>
 </head>
 <body>
   <div class="container">
@@ -18,17 +20,14 @@
         <!-- Logo -->
         <img src="/Assets/Images/LogoPBlack.png" alt="Logo Pacers">
         <form id="signupForm">
-          <input type="email" class="form-control" id="email" placeholder="E-mail" required>
-          <div class="input-group-append">
-          <span class="input-group-text">Email</span>
-          </div>
 
-          <input type="password" class="form-control" id="senha"placeholder="Senha" required>
-          <div class="input-group-append">
-            <span class="input-group-text">Senha</span>
-            </div>
-
-          <button class="btn btn primary" onclick="creteaLogin()">Criar conta</button>
+          <label for="username">Username</label>   
+          <input type="email" placeholder="Email"  id="email" required>
+        
+          <label for="password">Password</label>   
+          <input type="password" placeholder="Password" id="password"required>
+         
+          <button id="submit" type="submit">Crie sua Conta  </button>
         </form>
       </div>
     </div>
