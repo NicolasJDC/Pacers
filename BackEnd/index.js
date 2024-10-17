@@ -14,5 +14,15 @@ const firebaseConfig = {
   function Cadastrar(){
     var auth = null;
 
-    firebase.auth().createUser
+    firebase.auth().createUserwithEmailAndPassword(document.getElementById("email").value, document.getElementById("password").value)
+    .then(function (user){
+     alert("seus dados foram salvos com sucesso" );
+     auth = user;
+
+     //para atualizar o navegador 
+     document.getElementById("email").value = ''
+     document.getElementById("senha").value = ''
+    }).catch(function(error){
+        alert("falha ao cadastrar");
+    })
   }
