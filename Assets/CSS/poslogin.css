@@ -10,11 +10,23 @@ body {
     height: 100vh;
   }
   .header {
-    background: linear-gradient(135deg, #1e90ff, #00aaff);
-    padding: 20px;
+    display: flex;
+    background-image: linear-gradient(135deg, #1e90ff, #00aaff);
+    padding: 10px 20px;
+    text-align: left;
+    justify-content: space-between;
+    align-items: center;
     color: white;
-    text-align: center;
   }
+
+  .header h1 {
+    margin-right: 45%;
+  }
+
+  .logo{
+    max-height: 90px;
+    width: auto;
+}
   .content {
     flex: 1;
     padding: 20px;
@@ -22,10 +34,7 @@ body {
     flex-direction: column;
     align-items: center;
   }
-  .welcome-message {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
+ 
   .section {
     width: 80%;
     background: white;
@@ -41,6 +50,7 @@ body {
     display: flex;
     justify-content: space-around;
     margin-bottom: 15px;
+    margin-top: 10px;
   }
   .quick-links a {
     color: #1e90ff;
@@ -48,6 +58,12 @@ body {
     text-decoration: none;
     font-weight: bold;
   }
+
+  .quick-links a:hover {
+    text-decoration: underline;
+    transform: scale(1.1);
+  }
+
   .chart {
     width: 100%;
     height: 200px;
