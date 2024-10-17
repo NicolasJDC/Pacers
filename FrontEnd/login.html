@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Pacers</title>
+  <link rel="stylesheet" href="Assets/CSS/loginstyle.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Botão Voltar -->
+    <a href="home.html">
+      <button class="back-button">Voltar</button>
+    </a>
+
+    <!-- Seção de Login -->
+    <div class="login-section">
+      <div class="login-box">
+        <!-- Logo -->
+        <img src="Assets/Images/LogoPBlack.png" alt="Logo Pacers">
+        <form>
+          <input type="email" class="form-control email-class" id="email" placeholder="Cadastre o seu email" required>
+          <input type="password" class="form-control email class" id="senha" placeholder="Senha" required>
+
+
+          <div class="remember-forgot">
+            <label><input type="checkbox"> Lembrar-me</label>
+            <a href="#" style="color: white;">Esqueceu a senha?</a>
+          </div>
+          <button type="submit">Entrar</button>
+
+                  <!-- Botão de Login com Google -->
+          <button class="google-button" id="googleLogin">
+            <img src="Assets/Images/google-logo.png" alt="Google Logo">
+            Continuar com Google
+          </button>
+
+        </form>
+
+        <!-- Link para cadastro -->
+        <div class="signup-link">
+          <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src= "https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src= "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script> const firebaseConfig = {
+  apiKey: "AIzaSyA4jHszfFYRY5RPbromzFutRPrHMrdi8uY",
+  authDomain: "pacers-7928a.firebaseapp.com",
+  databaseURL: "https://pacers-7928a-default-rtdb.firebaseio.com",
+  projectId: "pacers-7928a",
+  storageBucket: "pacers-7928a.appspot.com",
+  messagingSenderId: "788533711208",
+  appId: "1:788533711208:web:365527901cc118e33486dd",
+  measurementId: "G-43GVLJXXRH"
+};
+   firebase.initializeApp(firebaseConfig);
+
+
+
+     // Login via Google
+  document.getElementById('googleLogin').addEventListener('click', () => {
+    auth.signInWithPopup(provider)
+      .then((result) => {
+        console.log(result.user);
+        alert(`Usuário logado: ${result.user.email}`);
+
+        // Obter o ID Token do usuário
+        result.user.getIdToken().then((token) => {
+          // Enviar o token para o servidor
+          fetch('/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ token })
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log('Resposta do servidor:', data);
+          })
+          .catch(error => {
+            console.error('Erro no envio do token:', error);
+          });
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        alert('Erro ao tentar logar: ' + error.message);
+      });
+  });
+</script>
+
+</html>
