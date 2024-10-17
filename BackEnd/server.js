@@ -32,3 +32,13 @@ app.post('/login', (req, res) => {
 app.listen(3000, () => {
   console.log('Servidor rodando na porta 3000');
 });
+
+//impostando rotas 
+const baitRoutes = require('./Routes/bait');
+const leadRoutes = require('./Routes/lead');
+const authRoutes = require('./Routes/auth');
+
+// Usando as rotas 
+app.use('./auth',authRoutes);
+app.use('./bait',baitRoutes);
+app.use('./leads', leadRoutes);
