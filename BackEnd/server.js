@@ -33,7 +33,7 @@ app.listen(3000, () => {
   console.log('Servidor rodando na porta 3000');
 });
 
-//impostando rotas 
+//importando rotas 
 const baitRoutes = require('./Routes/bait');
 const leadRoutes = require('./Routes/lead');
 const authRoutes = require('./Routes/auth');
