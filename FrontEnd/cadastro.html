@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Esqueceu a Senha - Pacers</title>
-  <link rel="stylesheet" href="/Assets/CSS/loginstyle.css">
+  <title>Cadastro - Pacers</title>
+  <link rel="stylesheet" href="/Assets/CSS/cadastrostyle.css">
 </head>
 <body>
   <div class="container">
@@ -12,19 +12,20 @@
     <a href="login.html">
       <button class="back-button">Voltar</button>
     </a>
-    <!-- Seção de Esqueceu a Senha -->
-    <div class="login-section">
-      <div class="login-box">
+    <!-- Seção de Cadastro -->
+    <div class="signup-section">
+      <div class="signup-box">
         <!-- Logo -->
         <img src="/Assets/Images/LogoPBlack.png" alt="Logo Pacers">
-        <h2>Recuperar Senha</h2>
-        <form id="forgotPasswordForm">
+        <form id="signupForm">
+          <input type="text" placeholder="Nome de Usuário" required>
           <input type="email" placeholder="Email" required>
-          <button type="submit">Enviar Email de Recuperação</button>
+          <input type="password" placeholder="Senha" required>
+          <button type="submit" id="signupButton">Cadastrar</button>
         </form>
       </div>
     </div>
   </div>
-  <script src="/BackEnd/forgotPassword.js"></script>
+  <script src="/BackEnd/singup.js"></script>
 </body>
 </html>
