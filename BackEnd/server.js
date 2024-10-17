@@ -1,31 +1,34 @@
 const express = require('express');
 const admin = require('firebase-admin');
 
-// Inicialize o Firebase Admin SDK
-admin.initializeApp({
-  credential: admin.credential.applicationDefault(),
-  databaseURL: "https://pacers-7928a-default-rtdb.firebaseio.com"
-});
-
 const app = express();
-app.use(express.json());  // Para interpretar requisições com JSON
+app.use(express.json());  // Permite que o servidor processe requisições com JSON
 
-// Rota para lidar com o login do usuário
+// Rota para lidar com o login do usuário e validar o token
 app.post('/login', (req, res) => {
-  const idToken = req.body.token;  // Token enviado pelo front-end
+  const idToken = req.body.token;  // Token recebido do front-end
 
-  // Verificar o ID Token com Firebase Admin
+  // Validar o token usando o Firebase Admin SDK
   admin.auth().verifyIdToken(idToken)
     .then((decodedToken) => {
-      const uid = decodedToken.uid;
-      res.json({ message: 'Usuário autenticado com sucesso', uid });
+      const uid = decodedToken.uid;  // ID do usuário autenticado
+
+      // Resposta bem-sucedida
+      res.status(200).json({
+        message: 'Usuário autenticado com sucesso!',
+        uid: uid  // ID do usuário
+      });
     })
     .catch((error) => {
-      res.status(401).json({ message: 'Token inválido', error });
+      // Resposta de erro se o token for inválido
+      res.status(401).json({
+        message: 'Token inválido!',
+        error: error.message
+      });
     });
 });
 
-// Inicializando o servidor
+// Inicializar o servidor na porta 3000
 app.listen(3000, () => {
   console.log('Servidor rodando na porta 3000');
 });
