@@ -1,0 +1,109 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  .header {
+    background: linear-gradient(135deg, #1e90ff, #00aaff);
+    padding: 20px;
+    color: white;
+    text-align: center;
+  }
+  .content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .back-button {
+    position: absolute;
+    top: 5%;
+    left: 10px;
+    padding: 10px 20px;
+    background-color: #ff6347;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .back-button:hover {
+    background-color: #e5533d;
+  }
+
+  .section {
+    width: 80%;
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .section h3 {
+    margin-top: 0;
+  }
+  .form-inline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .form-inline input, .form-inline select {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: transform 0.2s;
+  }
+  .form-inline input:focus, .form-inline select:focus {
+    transform: scale(1.05);
+    border-color: #1e90ff;
+  }
+  .form-inline button {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1e90ff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .form-inline button:hover {
+    background-color: #00aaff;
+  }
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  .table th, .table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  .table th {
+    background-color: #f2f2f2;
+  }
+  .chart {
+    width: 100%;
+    height: 200px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #666;
+  }

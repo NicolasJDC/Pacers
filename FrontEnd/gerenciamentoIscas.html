@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciamento de Iscas Digitais - Pacers</title>
+  <link rel="stylesheet" href="/Assets/CSS/gerenciamentoIscas.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Gerenciamento de Iscas Digitais</h1>
+      <a href="/FrontEnd/poslogin.html">
+        <button class="back-button">Voltar</button>
+      </a>
+    </div>
+    <div class="content">
+
+      <!-- Criação de Iscas Digitais -->
+      <div class="section">
+        <h3>Criação de Nova Isca Digital</h3>
+        <div class="form-inline">
+          <input type="text" placeholder="Nome da Isca" required>
+          <input type="text" placeholder="Descrição da Isca" required>
+          <select>
+            <option value="">Selecione o Tipo de Conteúdo</option>
+            <option value="pdf">PDF</option>
+            <option value="planilha">Planilha</option>
+            <option value="template">Template</option>
+          </select>
+          <input type="file" required>
+          <button>Criar Isca</button>
+        </div>
+      </div>
+
+      <!-- Gerenciamento de Iscas Digitais -->
+      <div class="section">
+        <h3>Gerenciar Iscas Digitais</h3>
+        <table class="table">
+          <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+            <th>Ações</th>
+          </tr>
+          <!-- Exemplo de isca -->
+          <tr>
+            <td>E-book Marketing</td>
+            <td>Guia completo de marketing digital</td>
+            <td>PDF</td>
+            <td>
+              <button>Editar</button>
+              <button>Remover</button>
+              <button>Arquivar</button>
+              <button>Gerar Link</button>
+            </td>
+          </tr>
+          <!-- Mais linhas de iscas -->
+        </table>
+      </div>
+
+      <!-- Páginas de Captura -->
+      <div class="section">
+        <h3>Criar Página de Captura</h3>
+        <div class="form-inline">
+          <input type="text" placeholder="Título da Página de Captura" required>
+          <input type="text" placeholder="Descrição da Página de Captura" required>
+          <select>
+            <option value="">Selecione a Isca Digital</option>
+            <option value="ebook-marketing">E-book Marketing</option>
+            <!-- Mais opções de iscas -->
+          </select>
+          <button>Criar Página de Captura</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
