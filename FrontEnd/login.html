@@ -71,6 +71,7 @@
       auth.signInWithPopup(provider)
         .then((result) => {
           console.log(result.user);
+         // Redirecionar para a página poslogin.html após login bem-sucedido
           window.location.href = '/FrontEnd/poslogin.html';
           alert(Usuário logado: ${result.user.email});
 
@@ -87,8 +88,6 @@
             .then(response => response.json())
             .then(data => {
               console.log('Resposta do servidor:', data);
-
-              // Redirecionar para a página poslogin.html após login bem-sucedido
             })
             .catch(error => {
               console.error('Erro no envio do token:', error);
