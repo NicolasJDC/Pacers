@@ -22,7 +22,7 @@ app.use(bodyParser.json());  // Permite que o servidor processe requisições co
 // Rota para lidar com o login do usuário e validar e-mail e senha
 app.post('/login', validateUserLogin); // Usaremos a função de validação do validations.js
 
-// Rota de exemplo para login via token (Google)
+// Rota de exemplo para login via token, se necessário
 app.post('/login-token', (req, res) => {
   const idToken = req.body.token;  // Token recebido do front-end
 
@@ -132,7 +132,5 @@ app.delete('/api/account/:id', async (req, res) => {
   await db.collection('users').doc(userId).delete();
   res.status(200).send('Conta excluída!');
 });
-
-
 
 
