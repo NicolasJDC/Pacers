@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Pacers</title>
   <link rel="stylesheet" href="/Assets/CSS/loginstyle.css">
-  <link rel="icon" href="/Assets/Images/LogoPBlack.png">
 </head>
 <body>
   <div class="container">
@@ -24,7 +23,7 @@
           <input type="password" placeholder="Senha" required>
           <div class="remember-forgot">
             <label><input type="checkbox"> Lembrar-me</label>
-            <a href="/FrontEnd/forgetPassword.html">Esqueceu a senha?</a>
+            <a href="/FrontEnd/esqueceu.html">Esqueceu a senha?</a>
           </div>
           <button type="submit">Entrar</button>
 
@@ -71,31 +70,25 @@
 
       auth.signInWithPopup(provider)
         .then((result) => {
-          console.log(result.user);
-          window.location.href = '/FrontEnd/poslogin.html';
-          alert(`Usuário logado: ${result.user.email}`);
-
-          // Obter o ID Token do usuário
-          result.user.getIdToken().then((token) => {
-            // Enviar o token para o servidor
-            fetch('/login', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ token })
-            })
-            .then(response => response.json())
-            .then(data => {
-              console.log('Resposta do servidor:', data);
-            })
-            .catch(error => {
-              console.error('Erro no envio do token:', error);
-            });
-          });
+          const user = result.user;
+          console.log(user);
+          
+          // Verificar se o usuário está cadastrado no Firebase Authentication
+          return auth.fetchSignInMethodsForEmail(user.email);
+        })
+        .then((signInMethods) => {
+          if (signInMethods.length > 0) {
+            // O usuário está cadastrado, redirecionar para a página de pós-login
+            window.location.href = '/FrontEnd/poslogin.html';
+          } else {
+            // O usuário não está cadastrado
+            alert('Usuário não cadastrado.');
+            // Pode fazer logout para limpar o estado
+            auth.signOut();
+          }
         })
         .catch((error) => {
-          console.error(error);
+          console.error('Erro ao tentar logar: ', error);
           alert('Erro ao tentar logar: ' + error.message);
         });
     });
