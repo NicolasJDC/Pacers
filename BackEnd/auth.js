@@ -31,16 +31,3 @@ router.post('/login', async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 });
-
-// Recuperação de senha
-router.post('/forgot-password', async (req, res) => {
-    const { email } = req.body;
-    try {
-        await admin.auth().generatePasswordResetLink(email);
-        res.status(200).json({ message: 'Link de redefinição de senha enviado' });
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
-});
-
-module.exports = router;
