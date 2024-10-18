@@ -5,25 +5,34 @@ body {
   background-color: #f0f0f0;
 }
 
+
+
 .container {
   display: flex;
   height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1e90ff, #00aaff);
 }
 
 .login-section {
-  flex: 1;
-  background: linear-gradient(135deg, #1e90ff, #00aaff);
-  padding: 50px;
+  background-color: white; /* Fundo branco */
+  padding: 40px; /* Espaçamento interno maior */
+  border-radius: 15px; /* Bordas arredondadas para efeito de janela */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Sombra para simular profundidade */
+  max-width: 400px; /* Limita a largura da janela de login */
+  width: 100%; /* Faz com que a janela ocupe toda a largura disponível */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
-  position: relative;
+  color: black; /* Texto preto para contraste */
 }
 
 .login-box {
-  width: 350px;
+  width: 100%; /* Garante que o conteúdo do login ocupe toda a largura da janela */
   text-align: center;
+  
 }
 
 .login-box img {
@@ -49,13 +58,34 @@ body {
 .login-box input[type="password"] {
   background-color: #fff;
   color: #333;
+  border: 1px solid black;
 }
+
+.login-box input[type="text"]:focus,
+.login-box input[type="password"]:focus {
+  border: none;
+  outline: 1px solid #00aaff;
+  transform: scale(1.05);
+}
+
 
 .login-box .remember-forgot {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
 }
+
+.remember-forgot a {
+ color: #00aaff;  
+ text-decoration: none;
+ margin-right: 5%;
+}
+
+.remember-forgot a:hover {
+  color: #1e90ff;  
+  text-decoration: underline;
+  transform: scale(1.1);
+ }
 
 .login-box .remember-forgot input[type="checkbox"] {
   margin-right: 10px;
@@ -84,7 +114,12 @@ body {
 }
 
 .login-box .signup-link a {
-  color: white;
+  color: #00aaff;
+  text-decoration: none;
+}
+
+.login-box .signup-link a:hover {
+  color: #1e90ff;
   text-decoration: underline;
 }
 

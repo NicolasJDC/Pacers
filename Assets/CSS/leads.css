@@ -12,16 +12,29 @@ body {
     
 }
 .header {
+    display: flex;
     width: 100vw;
-    background: linear-gradient(135deg, #1e90ff, #00aaff);
-    padding: 20px;
+    background-image: linear-gradient(135deg, #1e90ff, #00aaff);
+    padding: 10px 20px;
+    text-align: l;
+    justify-content: center;
+    align-items: center;
     color: white;
-    text-align: center;
+  }
+
+  .header h1{
+    justify-self: right;
+    padding: 20px;
+  }
+
+  .logo{
+    max-height: 90px;
+    width: auto;
 }
 
 .back-button {
     position: absolute;
-    top: 5%;
+    top: 4%;
     left: 10px;
     padding: 10px 20px;
     background-color: #ff6347;

@@ -7,8 +7,8 @@ export function registerUser() {
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-
-import { getAuth, createUserWithEmailAndPassword } from "http://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import{getFirestore, setDoc, doc} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js"
 
 
 // Your web app's Firebase configuration
@@ -27,24 +27,43 @@ const app = initializeApp(firebaseConfig);
 //submit button
 const submit = document.getElementById('submit');
 submit.addEventListener("click", function(event){
-event.preventDefault()
+  event.preventDefault()
 
-//inputs
-const email = document.getElementById('email').value;
-const password = document.getElementById('password').value;
+  //inputs
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
 
+  const auth=getAuth();
+    const db=getFirestore();
+    console.log(auth)
 
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed up 
-    const user = userCredential.user;
-    alert("Criando conta...")
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    alert(errorMessage)
-    // ..
-  });
-})
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential)=>{
+        const user=userCredential.user;
+        const userData={
+            email: email,
+
+          //  firstName: firstName,
+          //  lastName:lastName
+        };
+      //  showMessage('Account Created Successfully', 'signUpMessage');
+        const docRef=doc(db, "users", user.uid);
+        setDoc(docRef,userData)
+        .then(()=>{
+            window.location.href='index.html';
+        })
+        .catch((error)=>{
+            console.error("error writing document", error);
+
+        });
+    })
+    .catch((error)=>{
+        const errorCode=error.code;
+        if(errorCode=='auth/email-already-in-use'){
+      //      showMessage('Email Address Already Exists !!!', 'signUpMessage');
+        }
+        else{
+      //      showMessage('unable to create User', 'signUpMessage');
+        }
+    })
+ });
