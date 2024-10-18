@@ -70,34 +70,26 @@
 
       auth.signInWithPopup(provider)
         .then((result) => {
-          console.log(result.user);
-          window.location.href = '/FrontEnd/poslogin.html';
-          alert(`Usuário logado: ${result.user.email}`);
+          const user = result.user; // Obter o usuário logado
+          console.log(user.email); // Logar o email do usuário no console
 
-          // Obter o ID Token do usuário
-          result.user.getIdToken().then((token) => {
-            // Enviar o token para o servidor
-            fetch('/login', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ token })
-            })
-            .then(response => response.json())
-            .then(data => {
-              console.log('Resposta do servidor:', data);
+          // Verificar se o usuário está cadastrado no Firebase Authentication
+          return auth.fetchSignInMethodsForEmail(user.email); // Consultar métodos de login
+        })
+        .then((signInMethods) => {
+          // Se o usuário não tiver métodos de login, ele não está cadastrado
+          if (signInMethods.length === 0) {
+            alert('Usuário não cadastrado.'); // Alerta se não estiver cadastrado
+            return auth.signOut(); // Desconectar o usuário
+          }
 
-              // Redirecionar para a página poslogin.html após login bem-sucedido
-            })
-            .catch(error => {
-              console.error('Erro no envio do token:', error);
-            });
-          });
+          // O usuário está cadastrado, redirecionar para a página de pós-login
+          alert(`Usuário logado: ${user.email}`); // Exibir alerta com email do usuário
+          window.location.href = '/FrontEnd/poslogin.html'; // Redirecionar para a página de pós-login
         })
         .catch((error) => {
-          console.error(error);
-          alert('Erro ao tentar logar: ' + error.message);
+          console.error('Erro ao tentar logar: ', error); // Logar o erro no console
+          alert('Erro ao tentar logar: ' + error.message); // Alerta com a mensagem de erro
         });
     });
   </script>
