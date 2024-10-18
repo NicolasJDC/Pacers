@@ -4,5 +4,10 @@ document.getElementById('forgotPasswordForm').addEventListener('submit', functio
     // Adicione aqui a lógica para enviar o email de recuperação de senha ao servidor
     alert(`Email de recuperação enviado para: ${email}`);
 
+      function recoveryPassword(){
+
+        
+      }
+
     window.location.href = '/FrontEnd/login.html';
   });

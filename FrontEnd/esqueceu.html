@@ -20,11 +20,35 @@
         <h2>Recuperar Senha</h2>
         <form id="forgotPasswordForm">
           <input type="email" placeholder="Email" required>
-          <button type="submit">Enviar Email de Recuperação</button>
+          <button type="button" class="clear" id="recover-password-button" onclick="recoverPassword()" disabled="true">Recuperar senha</button>
         </form>
       </div>
     </div>
   </div>
-  <script src="/BackEnd/forgotPassword.js"></script>
 </body>
+
+//*script src="index.js"></script>
+//*script src="validations.js"></script>
+//*script src="loading.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script>
+  
+    // Configuração do Firebase
+    const firebaseConfig = {
+  apiKey: "AIzaSyDsGDFLSHiuketXtmDl1EHicSmDEOeM9A0",
+  authDomain: "login-example-f4f03.firebaseapp.com",
+  projectId: "login-example-f4f03",
+  storageBucket: "login-example-f4f03.appspot.com",
+  messagingSenderId: "81029437916",
+  appId: "1:81029437916:web:ff043eec4a3abe3ccd9719"
+};
+firebase.initializeApp(firebaseConfig);
+   
+</script>
+  <script src="/BackEnd/forgotPassword.js"></script>
 </html>
+
+
+
