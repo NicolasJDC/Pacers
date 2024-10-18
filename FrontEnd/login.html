@@ -49,13 +49,13 @@
   <script>
     // Configuração do Firebase
     const firebaseConfig = {
-  apiKey: "AIzaSyDsGDFLSHiuketXtmDl1EHicSmDEOeM9A0",
-  authDomain: "login-example-f4f03.firebaseapp.com",
-  projectId: "login-example-f4f03",
-  storageBucket: "login-example-f4f03.appspot.com",
-  messagingSenderId: "81029437916",
-  appId: "1:81029437916:web:ff043eec4a3abe3ccd9719"
-};
+      apiKey: "AIzaSyDsGDFLSHiuketXtmDl1EHicSmDEOeM9A0",
+      authDomain: "login-example-f4f03.firebaseapp.com",
+      projectId: "login-example-f4f03",
+      storageBucket: "login-example-f4f03.appspot.com",
+      messagingSenderId: "81029437916",
+      appId: "1:81029437916:web:ff043eec4a3abe3ccd9719"
+    };
 
     // Inicializando o Firebase
     firebase.initializeApp(firebaseConfig);
@@ -86,6 +86,9 @@
             .then(response => response.json())
             .then(data => {
               console.log('Resposta do servidor:', data);
+
+              // Redirecionar para a página poslogin.html após login bem-sucedido
+              window.location.href = '/FrontEnd/poslogin.html';
             })
             .catch(error => {
               console.error('Erro no envio do token:', error);
@@ -101,4 +104,3 @@
   <script src="/BackEnd/login.js"></script>
 </body>
 </html>
-
