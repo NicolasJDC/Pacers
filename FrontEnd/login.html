@@ -19,19 +19,13 @@
         <!-- Logo -->
         <img src="/Assets/Images/LogoPcB.png" alt="Logo Pacers">
         <form id="login-form">
-          <input type="text" placeholder="Usuário" required>
-          <input type="password" placeholder="Senha" required>
+          <input type="text" id="email" placeholder="Usuário" required>
+          <input type="password" id="password" placeholder="Senha" required>
           <div class="remember-forgot">
             <label><input type="checkbox"> Lembrar-me</label>
             <a href="/FrontEnd/esqueceu.html">Esqueceu a senha?</a>
           </div>
           <button type="submit">Entrar</button>
-
-          <!-- Botão de Login com Google -->
-          <button class="google-button" id="googleLogin">
-            <img src="/Assets/Images/google-logo.png" alt="Google Logo">
-            Continuar com Google
-          </button>
         </form>
 
         <!-- Link para cadastro -->
@@ -42,64 +36,37 @@
     </div>
   </div>
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-
   <script>
-    // Configuração do Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyDsGDFLSHiuketXtmDl1EHicSmDEOeM9A0",
-      authDomain: "login-example-f4f03.firebaseapp.com",
-      projectId: "login-example-f4f03",
-      storageBucket: "login-example-f4f03.appspot.com",
-      messagingSenderId: "81029437916",
-      appId: "1:81029437916:web:ff043eec4a3abe3ccd9719"
-    };
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault(); // Evitar o comportamento padrão do formulário
 
-    // Inicializando o Firebase
-    firebase.initializeApp(firebaseConfig);
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
 
-    // Inicializando a autenticação e o provider do Google
-    const auth = firebase.auth();
-    const provider = new firebase.auth.GoogleAuthProvider();
-
-    // Função de login com Google
-    document.getElementById('googleLogin').addEventListener('click', (e) => {
-      e.preventDefault(); // Evitar o comportamento padrão do botão
-
-      auth.signInWithPopup(provider)
-        .then((result) => {
-          console.log(result.user);
-         // Redirecionar para a página poslogin.html após login bem-sucedido
-          window.location.href = '/FrontEnd/poslogin.html';
-          alert(`Usuário logado: ${result.user.email}`);
-
-          // Obter o ID Token do usuário
-          result.user.getIdToken().then((token) => {
-            // Enviar o token para o servidor
-            fetch('/login', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ token })
-            })
-            .then(response => response.json())
-            .then(data => {
-              console.log('Resposta do servidor:', data);
-            })
-            .catch(error => {
-              console.error('Erro no envio do token:', error);
-            });
-          });
-        })
-        .catch((error) => {
-          console.error(error);
-          alert('Erro ao tentar logar: ' + error.message);
+      try {
+        const response = await fetch('/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password })
         });
+
+        const data = await response.json();
+
+        if (data.success) {
+          // Redirecionar para a página poslogin.html após login bem-sucedido
+          window.location.href = '/FrontEnd/poslogin.html';
+        } else {
+          // Mostrar mensagem de erro
+          alert(data.message);
+        }
+      } catch (error) {
+        console.error('Erro ao realizar o login:', error);
+        alert('Erro ao realizar o login. Tente novamente mais tarde.');
+      }
     });
   </script>
-  <script src="/BackEnd/login.js"></script>
 </body>
 </html>
+
