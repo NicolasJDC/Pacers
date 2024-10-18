@@ -2,13 +2,28 @@ const express = require('express');
 const admin = require('firebase-admin');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const { validateUserLogin } = require('./validations');
 
+// Inicializando o Firebase Admin SDK
+if (!admin.apps.length) {
+  const serviceAccount = require('../path-to-your-service-account-key.json');
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://your-database.firebaseio.com"
+  });
+}
+
+const db = admin.firestore();
 
 const app = express();
-app.use(express.json());  // Permite que o servidor processe requisições com JSON
+app.use(cors());
+app.use(bodyParser.json());  // Permite que o servidor processe requisições com JSON
 
-// Rota para lidar com o login do usuário e validar o token
-app.post('/login', (req, res) => {
+// Rota para lidar com o login do usuário e validar e-mail e senha
+app.post('/login', validateUserLogin); // Usaremos a função de validação do validations.js
+
+// Rota de exemplo para login via token, se necessário
+app.post('/login-token', (req, res) => {
   const idToken = req.body.token;  // Token recebido do front-end
 
   // Validar o token usando o Firebase Admin SDK
@@ -36,23 +51,23 @@ app.listen(3000, () => {
   console.log('Servidor rodando na porta 3000');
 });
 
-//importando rotas 
+// Importando rotas
 const baitRoutes = require('./Routes/bait');
 const leadRoutes = require('./Routes/lead');
 const authRoutes = require('./Routes/auth');
 
-// Usando as rotas 
-app.use('./auth',authRoutes);
-app.use('./bait',baitRoutes);
-app.use('./leads', leadRoutes);
+// Usando as rotas
+app.use('/auth', authRoutes);  // Corrigi o uso incorreto de './auth' para '/auth'
+app.use('/bait', baitRoutes);
+app.use('/leads', leadRoutes);
 
-//Rotas para Iscas Digitais
+// Rotas para Iscas Digitais (Baits)
 app.get('/api/baits', async (req, res) => {
   const baitRef = db.collection('baits');
   const snapshot = await baitRef.get();
   let baits = [];
-  snapshot.forEach(doc =>{
-    baits.push({id: doc.id, ...doc.data()});
+  snapshot.forEach(doc => {
+    baits.push({ id: doc.id, ...doc.data() });
   });
   res.status(200).json(baits);
 });
@@ -76,7 +91,7 @@ app.delete('/api/baits/:id', async (req, res) => {
   res.status(200).send('Isca removida!');
 });
 
-//Rotas para o leads
+// Rotas para Leads
 app.get('/api/leads', async (req, res) => {
   const leadsRef = db.collection('leads');
   const snapshot = await leadsRef.get();
@@ -93,7 +108,7 @@ app.post('/api/leads', async (req, res) => {
   res.status(201).send('Lead capturado com sucesso!');
 });
 
-// Configuracao de conta 
+// Configuração de conta
 app.get('/api/account/:id', async (req, res) => {
   const userId = req.params.id;
   const userRef = db.collection('users').doc(userId);
@@ -117,7 +132,6 @@ app.delete('/api/account/:id', async (req, res) => {
   await db.collection('users').doc(userId).delete();
   res.status(200).send('Conta excluída!');
 });
-
 
 
 
