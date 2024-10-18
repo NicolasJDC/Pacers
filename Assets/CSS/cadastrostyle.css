@@ -8,6 +8,11 @@ body {
     display: flex;
     height: 100vh;
     justify-content: center;
+
+    align-items: center; 
+    color: white;
+    position: relative;
+
     align-items: center;
     background: linear-gradient(135deg, #1e90ff, #00aaff);
   }
@@ -23,6 +28,7 @@ body {
   justify-content: center;
   align-items: center;
   color: black; /* Texto preto para contraste */
+
   }
   .signup-box {
     width: 100%; /* Garante que o conteúdo do login ocupe toda a largura da janela */

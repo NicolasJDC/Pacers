@@ -1,3 +1,10 @@
+// register.js
+export function registerUser() {
+    console.log("User registered!");
+    // Adicione a lógica de registro aqui, como salvar o usuário ou validar os dados.
+  }
+  
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
