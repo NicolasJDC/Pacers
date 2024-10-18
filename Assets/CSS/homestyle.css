@@ -1,4 +1,5 @@
-* {
+  /* Estilos Gerais */
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -18,7 +19,7 @@ header {
     color: white;
 }
 
-.logo{
+.logo {
     max-height: 90px;
     width: auto;
 }
@@ -47,8 +48,22 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
+nav ul li .login-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li .login-btn:hover {
+    background-color: #218838;
+}
+
 .hero {
-    background-image: url(/Assets/Images/imagem-corporativa.png); /* Ajuste a URL da imagem conforme necessário */
+    background-image: url(/Assets/Images/imagem-corporativa.webp); /* Ajuste a URL da imagem conforme necessário */
     background-size: cover;
     background-position: center;
     color: white;
@@ -98,64 +113,152 @@ nav ul li a:hover {
     background-color: #008fc2;
 }
 
+/* Seção Sobre Nós */
+.section-about {
+    background-color: #f4f4f4;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.section-about h2 {
+    font-size: 32px;
+    color: #1e90ff;
+    margin-bottom: 30px;
+}
+
+.section-about p {
+    font-size: 18px;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+}
+
+.section-about h3 {
+    font-size: 26px;
+    color: #00aaff;
+    margin-bottom: 20px;
+}
+
+/* Seção Nossa Visão */
+.section-vision {
+    background-color: #ffffff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.section-vision h2 {
+    font-size: 32px;
+    color: #1e90ff;
+    margin-bottom: 30px;
+}
+
+.section-vision p {
+    font-size: 18px;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+}
+
+/* Seção O Que Fazemos */
+.section-what-we-do {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.section-what-we-do h2 {
+    font-size: 32px;
+    color: #1e90ff;
+    margin-bottom: 30px;
+}
+
+.section-what-we-do p {
+    font-size: 18px;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+}
+
+.section-what-we-do ul {
+    list-style-type: none;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.section-what-we-do ul li {
+    font-size: 18px;
+    color: #333;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.section-what-we-do ul li strong {
+    color: #1e90ff;
+}
+
+/* Footer */
 footer {
     background-color: #333;
     color: #fff;
     padding: 55px 0;
     font-family: Arial, sans-serif;
-  }
-  .footer-container {
+}
+.footer-container {
     display: flex;
     justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-  }
-  .footer-column {
+}
+.footer-column {
     flex: 1;
     margin: 0 15px;
-  }
-  .footer-column h4 {
+}
+.footer-column h4 {
     font-size: 18px;
     margin-bottom: 15px;
-  }
-  .footer-column ul {
+}
+.footer-column ul {
     list-style-type: none;
     padding: 0;
-  }
-  .footer-column ul li {
+}
+.footer-column ul li {
     margin-bottom: 10px;
-  }
-  .footer-column ul li a {
+}
+.footer-column ul li a {
     color: #fff;
     text-decoration: none;
-  }
-  .footer-column ul li a:hover {
+}
+.footer-column ul li a:hover {
     text-decoration: underline;
-  }
-  .social-icons a {
+}
+.social-icons a {
     margin-right: 10px;
     display: inline-block;
-  }
-  .social-icons i {
+}
+.social-icons i {
     width: 24px;
     height: 24px;
     color: white;
-  }
+}
 
-  .social-icons i:hover{
+.social-icons i:hover {
     scale: 1.2;
-  }
+}
 
-  .newsletter input[type="email"] {
+.newsletter input[type="email"] {
     padding: 10px;
     border: none;
     border-radius: 5px;
     margin-top: 10px;
     margin-right: 10px;
     width: 70%;
-  }
-  .newsletter button {
+}
+.newsletter button {
     padding: 10px 15px;
     margin-top: 10px;
     border: none;
@@ -163,17 +266,17 @@ footer {
     color: white;
     border-radius: 5px;
     cursor: pointer;
-  }
-  .newsletter button:hover {
+}
+.newsletter button:hover {
     background-color: #008fc2;
-  }
-  .footer-bottom {
+}
+.footer-bottom {
     text-align: center;
     margin-top: 20px;
     font-size: 14px;
-  }
+}
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     header {
         flex-direction: column;
         align-items: flex-start;
@@ -250,7 +353,7 @@ footer {
         text-align: center;
     }
 
-    .footer-container {
-        padding: 0 10px;
+    .footer-column ul {
+        padding: 0;
     }
 }
