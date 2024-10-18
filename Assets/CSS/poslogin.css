@@ -10,7 +10,6 @@ body {
     height: 100vh;
   }
   .header {
-    width: 100vw;
     display: flex;
     background-image: linear-gradient(135deg, #1e90ff, #00aaff);
     padding: 10px 20px;
