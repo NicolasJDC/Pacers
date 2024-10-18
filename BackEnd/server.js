@@ -20,23 +20,7 @@ app.use(cors());
 app.use(bodyParser.json());  // Permite que o servidor processe requisições com JSON
 
 // Rota para lidar com o login do usuário e validar e-mail e senha
-app.post('/login', async (req, res) => {
-  const { email, password } = req.body; // Captura o email e a senha do corpo da requisição
-
-  try {
-    const validationResponse = await validateUserLogin(req, res);
-    if (!validationResponse.success) {
-      return res.status(401).json({ message: validationResponse.message });
-    }
-    
-    // Se a validação for bem-sucedida, envie uma resposta de sucesso
-    res.status(200).json({ message: 'Login bem-sucedido.' });
-
-  } catch (error) {
-    console.error('Erro no login:', error);
-    res.status(500).json({ message: 'Erro interno do servidor.' });
-  }
-});
+app.post('/login', validateUserLogin); // Usaremos a função de validação do validations.js
 
 // Rota de exemplo para login via token, se necessário
 app.post('/login-token', (req, res) => {
@@ -73,7 +57,7 @@ const leadRoutes = require('./Routes/lead');
 const authRoutes = require('./Routes/auth');
 
 // Usando as rotas
-app.use('/auth', authRoutes);
+app.use('/auth', authRoutes);  // Corrigi o uso incorreto de './auth' para '/auth'
 app.use('/bait', baitRoutes);
 app.use('/leads', leadRoutes);
 
@@ -148,7 +132,6 @@ app.delete('/api/account/:id', async (req, res) => {
   await db.collection('users').doc(userId).delete();
   res.status(200).send('Conta excluída!');
 });
-
 
 
 
