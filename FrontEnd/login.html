@@ -34,7 +34,7 @@
         </div>
           <div class="remember-forgot">
             <label><input type="checkbox"> Lembrar-me</label>
-            <a href="/FrontEnd/esqueceu.html">Esqueceu a senha?</a>
+            <a href="/FrontEnd/forgetPassword.html">Esqueceu a senha?</a>
           </div>
           <button type="submit">Entrar</button>
 
@@ -84,7 +84,7 @@
           console.log(result.user);
          // Redirecionar para a página poslogin.html após login bem-sucedido
           window.location.href = '/FrontEnd/poslogin.html';
-          alert(`Usuário logado: ${result.user.email}`);
+          alert(Usuário logado: ${result.user.email});
 
           // Obter o ID Token do usuário
           result.user.getIdToken().then((token) => {
@@ -112,6 +112,10 @@
     });
   </script>
 </body>
+<<<<<<< HEAD
     <script src="/BackEnd/login.js"></script>
      <script src="/BackEnd/index.js"></script>
 </html>
+=======
+</html>
+>>>>>>> ed8bf898a68277889bab73f267eb23fbb70bb467

@@ -51,6 +51,27 @@ body {
   .section h3 {
     margin-top: 0;
   }
+
+
+  td button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px; /* Bordas arredondadas */
+    background-color: #1e90ff; /* Mesma cor do tema */
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin: 0 5px;
+}
+
+td button:hover {
+    background-color: #00aaff; /* Cor mais clara ao passar o mouse */
+    transform: scale(1.05);
+}
+
+  
   .form-inline {
     display: flex;
     flex-direction: column;
