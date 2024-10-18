@@ -2,7 +2,6 @@ const express = require('express');
 const admin = require('firebase-admin');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const { validateUserLogin } = require('./validations');
 
 // Inicializando o Firebase Admin SDK
 if (!admin.apps.length) {
@@ -20,30 +19,39 @@ app.use(cors());
 app.use(bodyParser.json());  // Permite que o servidor processe requisições com JSON
 
 // Rota para lidar com o login do usuário e validar e-mail e senha
-app.post('/login', validateUserLogin); // Usaremos a função de validação do validations.js
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
 
-// Rota de exemplo para login via token, se necessário
-app.post('/login-token', (req, res) => {
-  const idToken = req.body.token;  // Token recebido do front-end
+  try {
+    // Procurar o usuário pelo e-mail no Firestore
+    const usersRef = db.collection('users');
+    const querySnapshot = await usersRef.where('email', '==', email).get();
 
-  // Validar o token usando o Firebase Admin SDK
-  admin.auth().verifyIdToken(idToken)
-    .then((decodedToken) => {
-      const uid = decodedToken.uid;  // ID do usuário autenticado
+    if (querySnapshot.empty) {
+      // Nenhum usuário encontrado com o e-mail fornecido
+      return res.status(401).json({ success: false, message: 'Usuário não cadastrado.' });
+    }
 
-      // Resposta bem-sucedida
-      res.status(200).json({
-        message: 'Usuário autenticado com sucesso!',
-        uid: uid  // ID do usuário
-      });
-    })
-    .catch((error) => {
-      // Resposta de erro se o token for inválido
-      res.status(401).json({
-        message: 'Token inválido!',
-        error: error.message
-      });
+    // Verificar a senha
+    let userFound = false;
+    querySnapshot.forEach((doc) => {
+      const user = doc.data();
+      if (user.password === password) {
+        // Senha correta
+        userFound = true;
+        return res.status(200).json({ success: true, message: 'Login bem-sucedido.' });
+      }
     });
+
+    if (!userFound) {
+      // Senha incorreta
+      return res.status(401).json({ success: false, message: 'Senha incorreta.' });
+    }
+    
+  } catch (error) {
+    console.error('Erro ao validar login:', error);
+    return res.status(500).json({ success: false, message: 'Erro interno do servidor.' });
+  }
 });
 
 // Inicializar o servidor na porta 3000
