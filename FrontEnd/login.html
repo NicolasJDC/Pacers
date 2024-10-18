@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Pacers</title>
   <link rel="stylesheet" href="/Assets/CSS/loginstyle.css">
-  <link rel="icon" href="/Assets/Images/LogoPBlack.png">
 </head>
 <body>
   <div class="container">
@@ -24,7 +23,7 @@
           <input type="password" placeholder="Senha" required>
           <div class="remember-forgot">
             <label><input type="checkbox"> Lembrar-me</label>
-            <a href="/FrontEnd/forgetPassword.html">Esqueceu a senha?</a>
+            <a href="/FrontEnd/esqueceu.html">Esqueceu a senha?</a>
           </div>
           <button type="submit">Entrar</button>
 
@@ -88,6 +87,8 @@
             .then(response => response.json())
             .then(data => {
               console.log('Resposta do servidor:', data);
+
+              // Redirecionar para a página poslogin.html após login bem-sucedido
             })
             .catch(error => {
               console.error('Erro no envio do token:', error);
